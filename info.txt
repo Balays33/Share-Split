@@ -1,0 +1,18 @@
+Share&Split
+
+- main screen web and mobile base
+- firebase -realtime date
+- java / javascript 
+
+how will it work
+general a random number code
+you add your order bill and the final bill plus the tip
+other user can join to the shape bill and they can add their bill
+
+the program count the split of bill
+
+class
+-main class
+-logic class
+-random number generator
+-counter class

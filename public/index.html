@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--
+  <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.0.3/firebase-firestore.js"></script>
+   -->
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+       https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-database.js"></script>
+
+  <title>Welcome to Share - Split</title>
+
+
+
+</head>
+
+<body>
+
+  <pre id='object'></pre>
+
+
+
+
+  <h3>Share - Split</h3>
+  <p>Use the code</p>
+  <input id="inputCode">
+  <button onclick="sentCode()">Send Code</button>
+
+  <p>generate a code</p>
+  <p id="generatedNumber"></p>
+  <button onclick="GenerateACode(4)">Click me</button>
+
+
+  <button onclick="writeUserData('123','Gray')">Test</button>
+
+  <h2 id="finalPay"></h2>
+    <div>
+      <h3>Total Bill Amount</h3>
+      <input id="inputTotalBill">
+      <h4>Your are Owed</h4>
+      <input id="yourOwed">
+    </div>
+      <button onclick="UploadBill()">UploadBill</button>
+
+  
+  <script src="./private/app.js"></script>
+  <!--<script src="/private/app.js"> </script>-->
+
+</body>
+
+</html>
