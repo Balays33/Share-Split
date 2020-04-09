@@ -22,7 +22,7 @@ firebase.analytics();
 // get elements
 const Transaction = document.getElementById('Transaction');
 const inputTotalBill = document.getElementById('inputTotalBill');
-const yourOwed = document.getElementById('yourOwed');
+const mainOwed = document.getElementById('mainOwed');
 const NumberofPeople = document.getElementById('NumberofPeople');
 var codeFortransaction;
 
@@ -41,11 +41,11 @@ dbTransaction.on('value', snap => {
 function UploadBill() {
   console.log("upload data to cloud");
   GenerateACode(4);
-  console.log(" inputTotalBill : " + inputTotalBill.value + " yourOwed : " + yourOwed.value + " Number of People : " + NumberofPeople.value + " Tip : " + tip.value);
+  console.log(" inputTotalBill : " + inputTotalBill.value + " mainOwed : " + mainOwed.value + " Number of People : " + NumberofPeople.value + " Tip : " + tip.value);
   code = codeFortransaction;
   firebase.database().ref('ShareSplit/Transaction/' + codeFortransaction).set({
     inputTotalBill: inputTotalBill.value,
-    yourOwed: yourOwed.value,
+    mainOwed: mainOwed.value,
     NumberofPeople: NumberofPeople.value
   });
 
