@@ -20,24 +20,49 @@ firebase.analytics();
 
 // get elements
 const preObject = document.getElementById('object');
+const userdata = document.getElementById('userdata');
+const inputTotalBill = document.getElementById('inputTotalBill');
+const yourOwed = document.getElementById('yourOwed');
+const NumberofPeople = document.getElementById('NumberofPeople');
 
 // create references
 const dbRefObject = firebase.database().ref().child('object');
-//const dbRefObject = firebase.database().ref("object/favNumber");
+const dbRefUserCode = firebase.database().ref("User/Codes");
 
 //Sync object changes
 //dbRefObject.on('value', snap =>  console.log(snap.val()));
 dbRefObject.on('value', snap => { 
   preObject.innerHTML = JSON.stringify(snap.val(), null, 3);
 });
+dbRefUserCode.on('value', snap => { 
+  userdata.innerHTML = JSON.stringify(snap.val(), null, 3);
+  console.log(snap.val());
+});
+
+const age = document.getElementById('age');
+var testcode;
+function Testuser(){
+  console.log('Testuser '+age.value);
+  console.log('testcode '+testcode);
+  name = testcode;
+  firebase.database().ref('User/Codes' +name).set({
+    age: age.value,
+    testcode : testcode
+  });
+
+}
 
 
-
-function writeUserData(userId, name, email, imageUrl) {
-  firebase.database().ref('users/' + userId).set({
-    username: name,
-    email: email,
-    profile_picture : imageUrl
+function UploadBill(){
+  GenerateACode(4);
+  console.log("Upload Bill");
+  var genCODE = document.getElementById('generatedNumber').innerHTML;
+  console.log(genCODE);
+  console.log(" inputTotalBill : "+inputTotalBill.value+" yourOwed : "+yourOwed.value+" Upload NumberofPeople : "+NumberofPeople.value+" Tip : "+tip.value);
+  firebase.database().ref('codes/' +genCODE).set({
+    inputTotalBill: inputTotalBill,
+    yourOwed: yourOwed,
+    NumberofPeople: NumberofPeople
   });
 }
 
@@ -102,6 +127,7 @@ function pushcustomer() {
      result += characters.charAt(Math.floor(Math.random() * charactersLength));
   }
   document.getElementById("generatedNumber").innerHTML = result;
+  testcode = result;
   return result;
 }
 
@@ -113,3 +139,5 @@ function sentCode(){
 
 
 }
+
+

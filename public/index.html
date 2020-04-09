@@ -39,17 +39,30 @@
   <button onclick="GenerateACode(4)">Click me</button>
 
 
-  <button onclick="writeUserData('123','Gray')">Test</button>
+  <button onclick="writeUserData('123','Doom')">Test</button>
 
   <h2 id="finalPay"></h2>
     <div>
       <h3>Total Bill Amount</h3>
-      <input id="inputTotalBill">
+      <input id="inputTotalBill" type="number">
       <h4>Your are Owed</h4>
-      <input id="yourOwed">
+      <input id="yourOwed" type="number">
+      <h4>Number of People</h4>
+      <input id="NumberofPeople" type="number">
+      <h4>Tip</h4>
+      <input id="tip" type="number">
     </div>
       <button onclick="UploadBill()">UploadBill</button>
 
+  <pre id="userdata"></pre>
+  <input id="age">
+  <button onclick="Testuser()">Testuser</button>
+
+  <div>
+    <a href="./mainUser.html">I will pay</a>
+    <h3>I will pay to you</h3>
+
+  </div>
   
   <script src="./private/app.js"></script>
   <!--<script src="/private/app.js"> </script>-->
