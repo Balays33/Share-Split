@@ -9,7 +9,7 @@
     <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-analytics.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-database.js"></script>
 
-    <title>I will pay main page Share - Split</title>
+    <title>Client page Share - Split</title>
 
 
 
@@ -20,29 +20,21 @@
     <pre id='Transaction'></pre>
 
     <div>
-        <p id="generatedCODE">CODE</p>
-        <label for="yourCode">your code</label>
-        <input id="getCode" type="text" name="yourCode">
-        
+        Transaction CODE: <input type="text" id="clientcode" value="rjAJ">
+        <button onclick="pulldata()">Pull Data</button>
     </div>
     <div>
-        <h3>Total Bill Amount</h3>
-        <input id="inputTotalBill" type="number">
-        <h4>Your are Owed</h4>
-        <input id="yourOwed" type="number">
-        <h4>Number of People</h4>
-        <input id="NumberofPeople" type="number">
-        <h4>Tip</h4>
-        <input id="tip" type="number">
+        <pre id="getdataForCloud"></pre>
+
     </div>
-    <button onclick="UploadBill()">UploadBill</button>
+
     <div>
         <a href="./index.html">BACK</a>
 
     </div>
 
 
-    <script src="./private/mainUserapp.js"></script>
+    <script src="./private/clientUserapp.js"></script>
     <!--<script src="/private/app.js"> </script>-->
 
 
