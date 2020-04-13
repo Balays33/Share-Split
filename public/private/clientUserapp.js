@@ -16,24 +16,33 @@ firebase.analytics();
 
 
 
+
 // Get a reference to the database service
 //var database = firebase.database();
 
 // get elements
-const Transaction = document.getElementById('Transaction');
 const getdataForCloud = document.getElementById('getdataForCloud');
 
 
 // create references
-const dbTransaction = firebase.database().ref("ShareSplit/Transaction");
+//const dbTransaction = firebase.database().ref("ShareSplit/Transaction");
 //const dbGetData = firebase.database().ref("ShareSplit/Transaction/"+getCodeFromUser);
 
 
-//Sync object changes
-dbTransaction.on('value', snap => {
-    Transaction.innerHTML = JSON.stringify(snap.val(), null, 3);
-    console.log(snap.val());
-});
+//teststartF();
+// if you want to see all of the data from the server
+function teststartF(){
+    // get elements
+        const Transaction = document.getElementById('Transaction');
+    // create references
+        const dbTransaction = firebase.database().ref("ShareSplit/Transaction");
+    
+    //Sync object changes
+        dbTransaction.on('value', snap => {
+            Transaction.innerHTML = JSON.stringify(snap.val(), null, 3);
+            console.log(snap.val());
+        });
+}
 
 // get data from the cloud
 function pulldata() {
@@ -53,10 +62,18 @@ function yourBillupdate() {
     var xCode = document.getElementById("clientcode").value;
     console.log("client bill : " + clientBill + " euro");
 
-
-    pushClientBill(xCode, clientBill);
-    const dbGetData = firebase.database().ref("ShareSplit/Transaction/" + xCode + "");
-    SyncCloudData(dbGetData);
+    if (xCode != "????"){
+         //  block of code to be executed if the condition is true
+        pushClientBill(xCode, clientBill);
+        const dbGetData = firebase.database().ref("ShareSplit/Transaction/" + xCode + "");
+            SyncCloudData(dbGetData);
+            count(xCode);
+    } else {
+        //  block of code to be executed if the condition is false
+        console.log("Not correct code");
+        document.getElementById('notcorrectCode').innerHTML = "Not correct code";
+    }
+    
 
 }
 
@@ -71,30 +88,33 @@ function SyncCloudData(dbGetData) {
 
 // update the bill
 function pushClientBill(xCode, clientBill) {
-    console.log("update the bill" + xCode + clientBill);
-    //firebase.database().ref('ShareSplit/Transaction/' + xCode).set({
-    //clientBill: clientBill
-    //});
+    console.log("update the bill " + xCode +" " +clientBill);
+    firebase.database().ref('ShareSplit/Transaction/' + xCode).update({
+    clientBill: clientBill
+    });
 
-    // A post entry.
-    var postData = {
-        author: username,
-        uid: uid,
-        body: body,
-        title: title,
-        starCount: 0,
-        authorPic: picture
-        
-    };
-
-    // Get a key for a new Post.
-    var newPostKey = firebase.database().ref().child('ShareSplit/Transaction/' + xCode).push().key;
-
-    // Write the new post's data simultaneously in the posts list and the user's post list.
-    var updates = {};
-    updates['/posts/' + newPostKey] = postData;
     
 
-    return firebase.database().ref().update(updates);
+}
+
+// count how much have to pay the guest 
+function count(xCode){
+        var finalbill;
+        var NumberofPeople;
+        var clientBill;
+        var mainOwed;
+        // on() method
+        firebase.database().ref('ShareSplit/Transaction/' + xCode).on('value',(snap)=>{
+            //console.log(snap.val().FinalPay);
+            finalbill = snap.val().FinalPay;
+            NumberofPeople = snap.val().NumberofPeople;
+            clientBill = snap.val().clientBill;
+            mainOwed = snap.val().mainOwed;
+            console.log(finalbill);
+        });
+        var clientbilltoPAYstep = ((finalbill-mainOwed-clientBill) / NumberofPeople) ;
+        var clientbilltoPAY = clientbilltoPAYstep + clientBill;
+        document.getElementById('finalPayclient').innerHTML = clientbilltoPAYstep;
+   
 
 }
