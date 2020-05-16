@@ -58,23 +58,27 @@ function UploadBill() {
   console.log(" inputTotalBill : " + inputTotalBill.value + " mainOwed : " + mainOwed.value + " Number of People : " + NumberofPeople.value + " Tip : " + tip.value);
   //console.log(finalpay);
   code = getCodefromUser;
-  firebase.database().ref('ShareSplit/Transaction/' + code).set({
-    inputTotalBill: inputTotalBill.value,
-    mainOwed: mainOwed.value,
-    NumberofPeople: NumberofPeople.value,
-    tip : tip.value
-  });
-  counter(inputTotalBill.value,tip.value,code);
-  var sizeOfFor = NumberofPeople.value;
-  for ( step = 0; step < sizeOfFor; step++) {
-    // Runs few times
-    console.log('step : '+(step+1));
-    firebase.database().ref('ShareSplit/Transaction/' + code).update({
-      clientBill: step+1
-      });
+  if ((NumberofPeople.value < 20) && (inputTotalBill.value > mainOwed.value)){
+    firebase.database().ref('ShareSplit/Transaction/' + code).set({
+      inputTotalBill: inputTotalBill.value,
+      mainOwed: mainOwed.value,
+      NumberofPeople: NumberofPeople.value,
+      tip : tip.value
+    });
+    counter(inputTotalBill.value,tip.value,code);
+    var sizeOfFor = NumberofPeople.value;
+    for ( step = 0; step < sizeOfFor; step++) {
+      // Runs few times
+      console.log('step : '+(step+1));
+      firebase.database().ref('ShareSplit/Transaction/' + code).update({
+        clientBill: step+1
+        });
+    }
+    result = code;
+    getdataStart(code);
+  } else {
+    console.log("ERROR");
   }
-  result = code;
-  getdataStart(code);
 }
 
 

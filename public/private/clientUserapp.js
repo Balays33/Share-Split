@@ -68,6 +68,7 @@ function yourBillupdate() {
         const dbGetData = firebase.database().ref("ShareSplit/Transaction/" + xCode + "");
             SyncCloudData(dbGetData);
             count(xCode);
+            SyncCloudData(dbGetData);
     } else {
         //  block of code to be executed if the condition is false
         console.log("Not correct code");
@@ -113,8 +114,8 @@ function count(xCode){
             console.log(finalbill);
         });
         var clientbilltoPAYstep = ((finalbill-mainOwed-clientBill) / NumberofPeople) ;
-        var clientbilltoPAY = clientbilltoPAYstep + clientBill;
-        document.getElementById('finalPayclient').innerHTML = clientbilltoPAYstep;
-   
+        var clientbilltoPAY = +clientbilltoPAYstep + +clientBill;
+        console.log(clientbilltoPAY)
+        document.getElementById('finalPayclient').innerHTML = clientbilltoPAY;
 
 }

@@ -16,6 +16,16 @@
   <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-analytics.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-database.js"></script>
 
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-green.min.css" />
+  <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+  
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="icon" sizes="192x192" href="images/android-desktop.png">
+
   <title>Welcome to Share - Split</title>
 
 
@@ -23,13 +33,15 @@
 </head>
 
 <body>
-
+  <!--
   <pre id='object'></pre>
-
+  -->
 
 
 
   <h3>Share - Split</h3>
+  <h5>firebase realtime database</h5>
+   <!--
   <p>Use the code</p>
   <input id="inputCode">
   <button onclick="sentCode()">Send Code</button>
@@ -57,11 +69,136 @@
   <pre id="userdata"></pre>
   <input id="age">
   <button onclick="Testuser()">Testuser</button>
+  
+-->
+<!--///////////////////////////////////////////////////////////////////-->
+<div class="mdl-grid">
+  <div class="mdl-cell mdl-cell--6-col">
+   <!-- Square card -->
+   <style>
+    .demo-card-square.mdl-card {
+      width: 300px;
+      height: 300px;
+    }
+      div.ex3 {
+    background-color: lightblue;
+    
+    overflow: auto;
+  }
+   
+    </style>
+    
+    <div class="demo-card-square mdl-card mdl-shadow--2dp">
 
+
+      <div class="ex3">
+      
+      <div class="mdl-card__supporting-text">
+        Share - Split is the easiest way to share expenses with friends and family and stop stressing about 
+        “who owes who.” <br>
+        This is a web-based application. The app manages transactions in the cloud.
+      </div>
+      <div class="mdl-card__supporting-text">
+        Share - Split is great for: <br>
+        - Friends splitting restaurant bills between 2 people  <br>
+          (more than 2 people split bills will come later) <br>
+        -The users do not know the exact expenses (guessing) so the app will calculate the final payment
+      </div>
+      <div class="mdl-card__supporting-text">
+        Share - Split  is simple to use:<br>
+          Treasurer pay the bill<br>
+            The creditor has a transaction code and expenses<br>
+          Debtor pay the credit to the Treasurer<br>
+            The borrower adds the transaction code and expenses<br>
+          The back end process will calculate the final payment
+      </div>
+      
+    </div>
+</div>
+</div>
+
+  
+ 
+ 
+
+<!--///////////////////////////////////////////////////////////////////-->
+
+<div class="mdl-grid">
+  <div class="mdl-cell mdl-cell--6-col">
+
+    <!-- Square card -->
+<style>
+  .demo-card-square.mdl-card {
+    width: 300px;
+    height: 300px;
+  }
+  .demo-card-square > .mdl-card__title {
+    color: #fff;
+    background:
+      url('../assets/demos/dog.png') bottom right 15% no-repeat #46B6AC;
+  }
+  </style>
+  
+  <div class="demo-card-square mdl-card mdl-shadow--2dp">
+    <div class="mdl-card__title mdl-card--expand">
+      <h2 class="mdl-card__title-text">Treasurer</h2>
+    </div>
+    <div class="mdl-card__supporting-text">
+      Treasurer pay the bill
+    </div>
+    <div class="mdl-card__actions mdl-card--border">
+
+      <form method="get" action="./mainUser.html">
+        <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">I will pay</button>
+      </form>
+
+    </div>
+  </div>
+
+    
+
+  </div>
+  <div class="mdl-cell mdl-cell--6-col">
+
+    <!-- Square card -->
+<style>
+  .demo-card-square.mdl-card {
+    width: 300px;
+    height: 300px;
+  }
+  .demo-card-square > .mdl-card__title {
+    color: #fff;
+    background:
+      url('../assets/demos/dog.png') bottom right 15% no-repeat #46B6AC;
+  }
+  </style>
+  
+  <div class="demo-card-square mdl-card mdl-shadow--2dp">
+    <div class="mdl-card__title mdl-card--expand">
+      <h2 class="mdl-card__title-text">Debtor</h2>
+    </div>
+    <div class="mdl-card__supporting-text">
+      Debtor pay the credit to the Treasurer
+    </div>
+    <div class="mdl-card__actions mdl-card--border">
+
+      <form method="get" action="./clientUser.html">
+        <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">I will pay to you</button>
+      </form>
+
+  </div>
+  
+</div>
+
+
+
+<p>&copy; 2020 Balazs Barcza<p>
+ 
+<!--
   <div>
     <a href="./mainUser.html">I will pay</a>
     <a href="./clientUser.html">I will pay to you</a>
-    
+  -->   
 
   </div>
   
